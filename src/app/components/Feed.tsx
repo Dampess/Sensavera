@@ -85,13 +85,12 @@ export default function Feed() {
 
   const handleReport = (postId: number) => {
     alert("Post signalé 🚨");
-    // TODO: envoyer info au backend
   };
 
   return (
     <div className="flex flex-col gap-6">
       {/* Composer un post */}
-      <div className="bg-white rounded-2xl shadow-md p-4">
+      <div className="bg-white rounded-2xl shadow-md p-4 flex flex-col gap-3 animate-fade-in">
         <textarea
           value={newPost}
           onChange={(e) => setNewPost(e.target.value)}
@@ -100,7 +99,7 @@ export default function Feed() {
         />
         <button
           onClick={handlePublish}
-          className="mt-3 px-4 py-2 bg-[var(--color-sage)] text-white rounded-lg font-semibold"
+          className="self-end px-4 py-2 bg-[var(--color-sage)] text-white rounded-lg font-semibold hover:bg-[var(--color-sage)]/80 transition"
         >
           Publier
         </button>
@@ -113,11 +112,11 @@ export default function Feed() {
         return (
           <div
             key={post.id}
-            className="bg-white rounded-2xl shadow-md p-4 flex flex-col gap-3 relative animate-fadeIn"
+            className="bg-white rounded-2xl shadow-md p-4 flex flex-col gap-3 relative animate-fade-in hover:shadow-lg transition-shadow duration-300"
           >
             {/* Header */}
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 cursor-pointer">
                 <img
                   src={post.user.avatar}
                   alt={post.user.name}
@@ -136,12 +135,9 @@ export default function Feed() {
                 </div>
               </div>
 
-              {/* Menu trois points */}
-              <div className="relative">
-                <button
-                  className="p-1 rounded-full hover:bg-gray-100 transition"
-                  title="Options"
-                >
+              {/* Menu options */}
+              <div className="relative group">
+                <button className="p-1 rounded-full hover:bg-gray-100 transition">
                   <MoreHorizontal className="w-5 h-5 text-[var(--color-night)]" />
                 </button>
                 <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg border border-gray-200 z-10 hidden group-hover:block">
@@ -180,7 +176,7 @@ export default function Feed() {
               <img
                 src={post.content}
                 alt="Post image"
-                className="w-full max-h-[300px] object-cover rounded-xl"
+                className="w-full max-h-[300px] object-cover rounded-xl hover:scale-105 transition-transform duration-200"
               />
             )}
             {post.type === "video" && (
