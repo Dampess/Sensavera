@@ -94,8 +94,8 @@ export default function RootLayout({
           {/* Footer */}
           <footer className="h-16 mt-auto flex md:flex-row flex-col items-center justify-center gap-2 bg-white/90 text-[var(--color-sage)]/70 border-t border-[rgba(29,42,68,0.06)] text-sm px-4">
             <span className="hidden md:block">
-              © {new Date().getFullYear()} SENSAVERA — Chaque jour, positivité
-              et authenticité 🌿
+              © {new Date().getFullYear()} SensaVera — Ensemble vers plus de
+              positivité 🌿
             </span>
             <div className="flex gap-2 md:gap-4">
               <Link href="/legal/mentions" className="hover:underline text-sm">
@@ -132,58 +132,62 @@ export default function RootLayout({
         )}
 
         {/* Bulle Boîte à outils */}
-        <div className="fixed bottom-20 right-6 z-50">
-          <button
-            onClick={() => setOpenToolbox(!openToolbox)}
-            className="w-14 h-14 rounded-full bg-[var(--color-sage)] text-white shadow-lg flex items-center justify-center hover:scale-110 transition"
-          >
-            🛠️
-          </button>
+        {isConnected && (
+          <div className="fixed bottom-20 right-6 z-50">
+            <button
+              onClick={() => setOpenToolbox(!openToolbox)}
+              className="w-14 h-14 rounded-full bg-[var(--color-sage)] text-white shadow-lg flex items-center justify-center hover:scale-110 transition"
+            >
+              🛠️
+            </button>
 
-          {openToolbox && (
-            <div className="absolute bottom-20 right-0 bg-white rounded-2xl shadow-xl p-4 w-64 animate-fadeIn">
-              <h3 className="font-semibold text-lg mb-3">Boîte à outils 🌿</h3>
-              <ul className="flex flex-col gap-2">
-                <li>
-                  <button
-                    onClick={() => setChatOpen(true)}
-                    className="flex items-center gap-2 w-full px-3 py-2 rounded-lg hover:bg-gray-100"
-                  >
-                    <MessageCircle className="w-5 h-5 text-[var(--color-sage)]" />
-                    <span>Chat ami</span>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => setWellbeingOpen(true)}
-                    className="flex items-center gap-2 w-full px-3 py-2 rounded-lg hover:bg-gray-100"
-                  >
-                    <Heart className="w-5 h-5 text-red-500" />
-                    <span>Conseils bien-être</span>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => setBreathingOpen(true)}
-                    className="flex items-center gap-2 w-full px-3 py-2 rounded-lg hover:bg-gray-100"
-                  >
-                    <Wind className="w-5 h-5 text-blue-500" />
-                    <span>Exercice respiration</span>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => setResourcesOpen(true)}
-                    className="flex items-center gap-2 w-full px-3 py-2 rounded-lg hover:bg-gray-100"
-                  >
-                    <Book className="w-5 h-5 text-yellow-600" />
-                    <span>Ressources utiles</span>
-                  </button>
-                </li>
-              </ul>
-            </div>
-          )}
-        </div>
+            {openToolbox && (
+              <div className="absolute bottom-20 right-0 bg-white rounded-2xl shadow-xl p-4 w-64 animate-fadeIn">
+                <h3 className="font-semibold text-lg mb-3">
+                  Boîte à outils 🌿
+                </h3>
+                <ul className="flex flex-col gap-2">
+                  <li>
+                    <button
+                      onClick={() => setChatOpen(true)}
+                      className="flex items-center gap-2 w-full px-3 py-2 rounded-lg hover:bg-gray-100"
+                    >
+                      <MessageCircle className="w-5 h-5 text-[var(--color-sage)]" />
+                      <span>Chat ami</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => setWellbeingOpen(true)}
+                      className="flex items-center gap-2 w-full px-3 py-2 rounded-lg hover:bg-gray-100"
+                    >
+                      <Heart className="w-5 h-5 text-red-500" />
+                      <span>Conseils bien-être</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => setBreathingOpen(true)}
+                      className="flex items-center gap-2 w-full px-3 py-2 rounded-lg hover:bg-gray-100"
+                    >
+                      <Wind className="w-5 h-5 text-blue-500" />
+                      <span>Exercice respiration</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => setResourcesOpen(true)}
+                      className="flex items-center gap-2 w-full px-3 py-2 rounded-lg hover:bg-gray-100"
+                    >
+                      <Book className="w-5 h-5 text-yellow-600" />
+                      <span>Ressources utiles</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Modals */}
         {chatOpen && (
