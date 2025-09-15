@@ -10,6 +10,7 @@ import {
   FaCog,
   FaSignOutAlt,
   FaSearch,
+  FaStar,
 } from "react-icons/fa";
 import { MessageCircle, Heart, Book, Wind, X } from "lucide-react";
 
@@ -81,7 +82,11 @@ export default function RootLayout({
           {/* Header */}
           <header className="sticky top-0 z-50 h-16 backdrop-blur-xl bg-white/90 shadow-md flex items-center justify-between px-4 transition-all duration-300">
             <Link href="/dashboard" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[var(--color-sage)] flex items-center justify-center animate-pulse"></div>
+              {/* Logo rond + étoile */}
+              <div className="w-10 h-10 rounded-full bg-[var(--color-sage)] flex items-center justify-center shadow-md">
+                <FaStar className="text-white w-5 h-5" />
+              </div>
+
               <span className="text-lg font-bold tracking-wide">SENSAVERA</span>
             </Link>
           </header>

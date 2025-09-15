@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Feed from "../components/Feed";
+import { FaStar } from "react-icons/fa";
 
 const challenges = [
   { id: 1, text: "Complimente une personne de ton entourage 🌸" },
@@ -56,9 +57,16 @@ export default function DashboardPage() {
   // ------------------------
   if (!isConnected) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-[var(--color-cream)] text-center">
+      <div className="min-h-screen flex flex-col items-center bg-[var(--color-cream)] text-center">
+        {/* Header avec logo */}
+        <header className="w-full flex items-center justify-center py-6">
+          <div className="w-24 h-24 rounded-full bg-[var(--color-sage)] flex items-center justify-center shadow-md">
+            <FaStar className="text-white w-12 h-12" />
+          </div>
+        </header>
+
         {/* Hero */}
-        <section className="max-w-3xl py-16">
+        <section className="max-w-3xl py-16 px-6">
           <h1 className="text-5xl font-extrabold mb-6 text-[var(--color-night)] leading-tight">
             Bienvenue sur{" "}
             <span className="text-[var(--color-sage)]">SensaVera</span> 🌱
@@ -83,7 +91,7 @@ export default function DashboardPage() {
         </section>
 
         {/* Services */}
-        <section className="max-w-4xl w-full mt-20 space-y-16">
+        <section className="max-w-4xl w-full mt-20 space-y-16 px-6">
           <div className="flex flex-col md:flex-row items-center gap-10 text-left">
             <div className="text-5xl">🌞</div>
             <div>
@@ -91,9 +99,9 @@ export default function DashboardPage() {
                 Défis quotidiens
               </h2>
               <p className="text-gray-600 text-lg">
-                Chaque matin, découvre un ou plusieurs défis positifs et simples à réaliser pour
-                t’ancrer dans le moment présent et démarrer ta journée avec
-                énergie.
+                Chaque matin, découvre un ou plusieurs défis positifs et simples
+                à réaliser pour t’ancrer dans le moment présent et démarrer ta
+                journée avec énergie.
               </p>
             </div>
           </div>
